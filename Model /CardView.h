@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface PlayingCardView : UIView
+@interface CardView : UIView
 
 @property (nonatomic) NSUInteger rank;
 @property (strong,nonatomic) NSString *suit;

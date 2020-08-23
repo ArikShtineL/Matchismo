@@ -67,9 +67,8 @@ static int const MATCH_CARD_SET = 3;
 
       [gameStateAttributedString appendAttributedString:[[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@" not matched!"]]];
     
-      [gameState removeAllCardsFromChosenCardArray];
+      [gameState removeAllChosenCard];
       [gameState appendChosenCard];
-//      return [self cardContents:chosenSetCard];
       return gameStateAttributedString;
   }
   else if (gameState.scoreEranedNow == 0)
@@ -84,7 +83,7 @@ static int const MATCH_CARD_SET = 3;
     }
 
     [gameStateAttributedString appendAttributedString:[[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@" matched for %ld points", gameState.scoreEranedNow]]];
-    [gameState removeAllCardsFromChosenCardArray];
+    [gameState removeAllChosenCard];
 
     return gameStateAttributedString;
   }

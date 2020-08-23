@@ -60,11 +60,6 @@ static const int COST_OF_CHOOSN = 0;
 + (NSUInteger)maxRank {return [self rankStrings].count -1;}
 
 
-- (NSString *) contents
-{
-  return nil;
-}
-
 
 - (int)match:(NSArray *)otherCards 
 {

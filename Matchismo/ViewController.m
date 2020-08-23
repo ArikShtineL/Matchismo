@@ -123,12 +123,12 @@ static int const MATCH_CARD_DEFAULT = 2;
     if ([segue.destinationViewController isKindOfClass:[HistoryViewController class]])
     {
       HistoryViewController *historyVar = (HistoryViewController *)segue.destinationViewController;
-      historyVar.historyText = [self setHistoryArrayToString:_historyTextLines];
+      historyVar.historyText = [self HistoryArrayToString:_historyTextLines];
     }
   }
 }
 
--(NSMutableAttributedString *)setHistoryArrayToString:(NSMutableArray<NSMutableAttributedString *> *)historyTextArray
+-(NSMutableAttributedString *)HistoryArrayToString:(NSMutableArray<NSMutableAttributedString *> *)historyTextArray
 {
   NSMutableAttributedString *historyString = [[NSMutableAttributedString alloc] init];
   for (NSMutableAttributedString *attributedString in historyTextArray)

@@ -41,11 +41,6 @@
     return self;
 }
 
-- (instancetype) init
-{
-    return nil;
-}
-
 - (Card*)cardAtIndex:(NSUInteger)index
 {
     return (index < self.cards.count) ? self.cards[index]: nil;

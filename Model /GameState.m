@@ -20,7 +20,7 @@
 }
 
 
-- (void)removeAllCardsFromChosenCardArray
+- (void)removeAllChosenCard
 {
   [_chosenCards removeAllObjects];
 }

@@ -6,11 +6,11 @@
 //  Copyright © 2020 Arik Shtine. All rights reserved.
 //
 
-#import "PlayingCardView.h"
+#import "CardView.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface MatchismoPlayCardView : PlayingCardView
+@interface MatchismoPlayCardView : CardView
 
 @end
 

@@ -48,7 +48,7 @@ static int const MATCH_CARD_DEFAULT = 2;
     }
     gameStateText = [gameStateText stringByAppendingFormat:@" for %ld points", gameState.scoreEranedNow];
     [gameStateAttributedString appendAttributedString: [[NSAttributedString alloc] initWithString: gameStateText]];
-    [gameState removeAllCardsFromChosenCardArray];
+    [gameState removeAllChosenCard];
     return gameStateAttributedString;
   }
   else
@@ -60,7 +60,7 @@ static int const MATCH_CARD_DEFAULT = 2;
     }
     gameStateText = [gameStateText stringByAppendingFormat:@" don't match %ld points penalty", gameState.scoreEranedNow];
     [gameStateAttributedString appendAttributedString: [[NSAttributedString alloc] initWithString: gameStateText]];
-    [gameState removeAllCardsFromChosenCardArray];
+    [gameState removeAllChosenCard];
     [gameState appendChosenCard];
     return gameStateAttributedString;
   }

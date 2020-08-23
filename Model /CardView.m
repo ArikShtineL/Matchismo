@@ -6,15 +6,15 @@
 //  Copyright © 2020 Arik Shtine. All rights reserved.
 //
 
-#import "PlayingCardView.h"
+#import "CardView.h"
 
-@interface PlayingCardView()
+@interface CardView()
 @property (nonatomic) CGFloat faceCardScaleFactor;
 
 
 @end
 
-@implementation PlayingCardView
+@implementation CardView
 //
 //@synthesize _faceCardScaleFactor = faceCardScaleFactor;
 //

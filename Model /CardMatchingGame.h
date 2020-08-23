@@ -14,7 +14,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface CardMatchingGame : NSObject
 
-- (instancetype)initWithCardCount:(NSUInteger)count usingDeck:(Deck*)deck;
+
+- (instancetype)init NS_UNAVAILABLE;
+- (instancetype)initWithCardCount:(NSUInteger)count usingDeck:(Deck*)deck NS_DESIGNATED_INITIALIZER;
 
 - (void)chooseCardAtIndex:(NSUInteger)index;
 - (Card*)cardAtIndex:(NSUInteger)index;

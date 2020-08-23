@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, readwrite) NSInteger scoreEranedNow;
 
 
-- (void)removeAllCardsFromChosenCardArray;
+- (void)removeAllChosenCard;
 - (void)appendChosenCard;
 
 
