@@ -26,11 +26,6 @@
     return self;
 }
 
-//- (NSMutableArray *) cards
-//{
-//    if (!_cards) _cards = [[NSMutableArray alloc] init]; //change to non lazy
-//    return _cards;
-//}
 
 - (void)addCard:(Card *)card atTop:(BOOL)atTop{
     if (atTop){

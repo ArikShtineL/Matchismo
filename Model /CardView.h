@@ -8,18 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
-NS_ASSUME_NONNULL_BEGIN
-
 @interface CardView : UIView
 
 @property (nonatomic) NSUInteger rank;
-@property (strong,nonatomic) NSString *suit;
+@property (strong, nonatomic) NSString *suit;
 @property (nonatomic) BOOL faceUp;
+@property (nonatomic) CGFloat faceCardScaleFactor;
 
 
-- (NSString *) rankAsString;
-
+- (void)pinch:(UIPinchGestureRecognizer *)gesture;
+- (NSString *)rankAsString;
+- (CGFloat)faceCardScaleFactor;
+- (void)setFaceCardScaleFactor:(CGFloat)faceCardScaleFactor;
 
 @end
-
-NS_ASSUME_NONNULL_END

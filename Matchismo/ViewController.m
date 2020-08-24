@@ -8,6 +8,8 @@
 
 #import "ViewController.h"
 #import "HistoryViewController.h"
+#import "CardView.h"
+
 
 
 static int const MATCH_CARD_DEFAULT = 2;

@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4C2974B024F28BDD00F895ED /* CardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C2974AF24F28BDD00F895ED /* CardView.m */; };
-		4C2974B324F29E5A00F895ED /* MatchismoPlayCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C2974B224F29E5A00F895ED /* MatchismoPlayCardView.m */; };
+		4C686E6E24F390520056C01D /* CardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C686E6D24F390520056C01D /* CardView.m */; };
+		4C686E7324F3A0820056C01D /* TempViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C686E7224F3A0820056C01D /* TempViewController.m */; };
+		4C686E7624F3B0FC0056C01D /* MatchismoCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C686E7524F3B0FC0056C01D /* MatchismoCardView.m */; };
+		4C686E7924F3BB2A0056C01D /* SetCardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C686E7824F3BB2A0056C01D /* SetCardView.m */; };
 		4C8997B024E17C7900F8685E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C8997AF24E17C7800F8685E /* AppDelegate.m */; };
 		4C8997B324E17C7900F8685E /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C8997B224E17C7900F8685E /* SceneDelegate.m */; };
 		4C8997B624E17C7900F8685E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C8997B524E17C7900F8685E /* ViewController.m */; };
@@ -49,10 +51,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		4C2974AE24F28BDD00F895ED /* CardView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CardView.h; path = "Model /CardView.h"; sourceTree = "<group>"; };
-		4C2974AF24F28BDD00F895ED /* CardView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = CardView.m; path = "Model /CardView.m"; sourceTree = "<group>"; };
-		4C2974B124F29E5A00F895ED /* MatchismoPlayCardView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MatchismoPlayCardView.h; path = "Model /MatchismoPlayCardView.h"; sourceTree = "<group>"; };
-		4C2974B224F29E5A00F895ED /* MatchismoPlayCardView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MatchismoPlayCardView.m; path = "Model /MatchismoPlayCardView.m"; sourceTree = "<group>"; };
+		4C686E6A24F38F440056C01D /* CardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CardView.h; path = "Model /CardView.h"; sourceTree = "<group>"; };
+		4C686E6D24F390520056C01D /* CardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CardView.m; path = "Model /CardView.m"; sourceTree = "<group>"; };
+		4C686E7124F3A0740056C01D /* TempViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TempViewController.h; sourceTree = "<group>"; };
+		4C686E7224F3A0820056C01D /* TempViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TempViewController.m; sourceTree = "<group>"; };
+		4C686E7424F3B0FC0056C01D /* MatchismoCardView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MatchismoCardView.h; path = "Model /MatchismoCardView.h"; sourceTree = "<group>"; };
+		4C686E7524F3B0FC0056C01D /* MatchismoCardView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MatchismoCardView.m; path = "Model /MatchismoCardView.m"; sourceTree = "<group>"; };
+		4C686E7724F3BB2A0056C01D /* SetCardView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SetCardView.h; path = "Model /SetCardView.h"; sourceTree = "<group>"; };
+		4C686E7824F3BB2A0056C01D /* SetCardView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SetCardView.m; path = "Model /SetCardView.m"; sourceTree = "<group>"; };
 		4C8997AB24E17C7800F8685E /* Matchismo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Matchismo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C8997AE24E17C7800F8685E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		4C8997AF24E17C7800F8685E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -123,30 +129,32 @@
 		4C8997A224E17C7800F8685E = {
 			isa = PBXGroup;
 			children = (
-				4C2974AE24F28BDD00F895ED /* CardView.h */,
-				4C2974AF24F28BDD00F895ED /* CardView.m */,
-				4C2974B124F29E5A00F895ED /* MatchismoPlayCardView.h */,
-				4C2974B224F29E5A00F895ED /* MatchismoPlayCardView.m */,
 				4C8997E524E197AA00F8685E /* Card.h */,
 				4C8997E624E197AA00F8685E /* Card.m */,
+				4C686E7724F3BB2A0056C01D /* SetCardView.h */,
+				4C686E7824F3BB2A0056C01D /* SetCardView.m */,
+				4C8997F224E2816700F8685E /* CardMatchingGame.h */,
+				4C8997F324E2816700F8685E /* CardMatchingGame.m */,
+				4C686E6A24F38F440056C01D /* CardView.h */,
+				4C686E6D24F390520056C01D /* CardView.m */,
 				4C8997E824E1DA6300F8685E /* Deck.h */,
 				4C8997E924E1DA6300F8685E /* Deck.m */,
-				4C8997EB24E1E5A300F8685E /* PlayingCard.h */,
-				4C8997EC24E1E5A300F8685E /* PlayingCard.m */,
-				4C8997F824EAA80500F8685E /* SetPlayingCard.h */,
-				4C8997F924EAA80500F8685E /* SetPlayingCard.m */,
-				4C8997EE24E1F0BA00F8685E /* PlayingCardDeck.h */,
-				4C8997EF24E1F0BA00F8685E /* PlayingCardDeck.m */,
-				4C8997FB24EBCA7200F8685E /* SetPlayingCardDeck.h */,
-				4C8997FC24EBCA7200F8685E /* SetPlayingCardDeck.m */,
-				4C8997F324E2816700F8685E /* CardMatchingGame.m */,
-				4C8997F224E2816700F8685E /* CardMatchingGame.h */,
 				4C89980724ED5E0D00F8685E /* GameState.h */,
 				4C89980824ED5E0D00F8685E /* GameState.m */,
 				4C8997AD24E17C7800F8685E /* Matchismo */,
+				4C686E7424F3B0FC0056C01D /* MatchismoCardView.h */,
+				4C686E7524F3B0FC0056C01D /* MatchismoCardView.m */,
 				4C8997C924E17C7900F8685E /* MatchismoTests */,
 				4C8997D424E17C7900F8685E /* MatchismoUITests */,
+				4C8997EB24E1E5A300F8685E /* PlayingCard.h */,
+				4C8997EC24E1E5A300F8685E /* PlayingCard.m */,
+				4C8997EE24E1F0BA00F8685E /* PlayingCardDeck.h */,
+				4C8997EF24E1F0BA00F8685E /* PlayingCardDeck.m */,
 				4C8997AC24E17C7800F8685E /* Products */,
+				4C8997F824EAA80500F8685E /* SetPlayingCard.h */,
+				4C8997F924EAA80500F8685E /* SetPlayingCard.m */,
+				4C8997FB24EBCA7200F8685E /* SetPlayingCardDeck.h */,
+				4C8997FC24EBCA7200F8685E /* SetPlayingCardDeck.m */,
 			);
 			sourceTree = "<group>";
 		};
@@ -163,6 +171,8 @@
 		4C8997AD24E17C7800F8685E /* Matchismo */ = {
 			isa = PBXGroup;
 			children = (
+				4C686E7224F3A0820056C01D /* TempViewController.m */,
+				4C686E7124F3A0740056C01D /* TempViewController.h */,
 				4C8997F124E1F8FD00F8685E /* ViewController.h */,
 				4C8997B524E17C7900F8685E /* ViewController.m */,
 				4C89980124EBD48600F8685E /* SetPlayingCardGameViewController.h */,
@@ -333,19 +343,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C686E7324F3A0820056C01D /* TempViewController.m in Sources */,
 				4C8997FD24EBCA7200F8685E /* SetPlayingCardDeck.m in Sources */,
 				4C8997E724E197AA00F8685E /* Card.m in Sources */,
 				4C89980324EBD48600F8685E /* SetPlayingCardGameViewController.m in Sources */,
 				4C8997F024E1F0BA00F8685E /* PlayingCardDeck.m in Sources */,
 				4C89980924ED5E0D00F8685E /* GameState.m in Sources */,
-				4C2974B024F28BDD00F895ED /* CardView.m in Sources */,
 				4C8997FA24EAA80500F8685E /* SetPlayingCard.m in Sources */,
 				4C89980624ED508200F8685E /* HistoryViewController.m in Sources */,
+				4C686E7624F3B0FC0056C01D /* MatchismoCardView.m in Sources */,
+				4C686E7924F3BB2A0056C01D /* SetCardView.m in Sources */,
 				4C8997B624E17C7900F8685E /* ViewController.m in Sources */,
 				4C8997F724E9562F00F8685E /* PlayingCardGameViewController.m in Sources */,
 				4C8997F424E2816700F8685E /* CardMatchingGame.m in Sources */,
 				4C8997ED24E1E5A300F8685E /* PlayingCard.m in Sources */,
-				4C2974B324F29E5A00F895ED /* MatchismoPlayCardView.m in Sources */,
+				4C686E6E24F390520056C01D /* CardView.m in Sources */,
 				4C8997B024E17C7900F8685E /* AppDelegate.m in Sources */,
 				4C8997C124E17C7900F8685E /* main.m in Sources */,
 				4C8997EA24E1DA6300F8685E /* Deck.m in Sources */,
