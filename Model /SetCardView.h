@@ -12,6 +12,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SetCardView : CardView
 
+@property (strong, nonatomic) NSString *color;
+@property (strong, nonatomic) NSString *shade;
+
 @end
 
 NS_ASSUME_NONNULL_END

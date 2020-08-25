@@ -10,6 +10,8 @@
 #import "CardView.h"
 #import "PlayingCardDeck.h"
 #import "PlayingCard.h"
+#import "SetCardView.h"
+
 
 @interface TempViewController ()
 @property (weak, nonatomic) IBOutlet CardView *playingCardView;
@@ -43,11 +45,18 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
-    self.playingCardView.suit = @"♥";
-    self.playingCardView.rank = 12;
+  self.playingCardView.suit = @"♥";
+  self.playingCardView.rank = 9;
   self.playingCardView.faceUp = YES;
-    [self.playingCardView addGestureRecognizer:[[UIPinchGestureRecognizer alloc] initWithTarget:self.playingCardView action:@selector(pinch:)]];
+  
+	// Do any additional setup after loading the view, typically from a nib.
+//  SetCardView * cardSet = (SetCardView *)self.playingCardView;
+//  cardSet.suit = @"▲";
+//  cardSet.rank = 3;
+//  cardSet.color = @"purple";
+//  cardSet.shade = @"15";
+//  cardSet.faceUp = YES;
+//    [self.playingCardView addGestureRecognizer:[[UIPinchGestureRecognizer alloc] initWithTarget:self.playingCardView action:@selector(pinch:)]];
 }
 
 @end

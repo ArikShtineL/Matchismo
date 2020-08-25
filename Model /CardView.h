@@ -1,5 +1,5 @@
 //
-//  PlayingCardView.h
+//  CardView.h
 //  Matchismo
 //
 //  Created by Arik Shtine on 23/08/2020.
@@ -9,6 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface CardView : UIView
+
+#define CORNER_FONT_STANDARD_HEIGHT 180.0
+#define CORNER_RADIUS 12.0
 
 @property (nonatomic) NSUInteger rank;
 @property (strong, nonatomic) NSString *suit;
@@ -20,5 +23,10 @@
 - (NSString *)rankAsString;
 - (CGFloat)faceCardScaleFactor;
 - (void)setFaceCardScaleFactor:(CGFloat)faceCardScaleFactor;
+
+
+- (CGFloat)cornerScaleFactor;
+- (CGFloat)cornerRadius;
+- (CGFloat)cornerOffset;
 
 @end
