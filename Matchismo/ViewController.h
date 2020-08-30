@@ -10,15 +10,26 @@
 #import <UIKit/UIKit.h>
 #import "Deck.h"
 #import "CardMatchingGame.h"
+#import "Grid.h"
+#import "CardView.h"
+
 
 @interface ViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UIView *gameView;
+@property (strong, nonatomic) IBOutlet UIView *deckView; 
+@property (strong, nonatomic) Grid *grid;
 
-// protected for subclass
+
 - (Deck *)createDeck; // abstract
 - (void)setGameMatchNumber:(CardMatchingGame *)game;
-- (NSMutableAttributedString *)gameStateInterpreter:(GameState *)gameState;
-
+- (CardView *)createCardButtonView:(CGRect)cardFrame withCard:(Card *)card;
+- (void)crateDeckGameView;
+- (void)updateGrid;
+- (int)numberOfCardsForTheGame;
+- (int)maxNumberOfCardsForTheGame;
+- (CGRect)deckFrame;
+- (void)flipCardsAnimation:(CardView *)cardButton withCard:(Card *)card;
 
 
 @end

@@ -10,7 +10,7 @@
 
 @interface CardMatchingGame()
 @property (nonatomic, readwrite) NSInteger score;
-@property (nonatomic, strong) NSMutableArray<Card*> *cards;
+
 @end
 
 @implementation CardMatchingGame
@@ -24,9 +24,10 @@
         }
         _cards = [[NSMutableArray alloc] init];
         _gameState = [[GameState alloc] init];
+        _deck = deck;
         for (int i= 0; i< count; i++)
         {
-            Card *card = [deck drawRandomCard];
+          Card *card = [self.deck drawRandomCard];
             if (card)
             {
                 [self.cards addObject:card];
@@ -71,6 +72,8 @@
                     {
                         otherCard.isMatched = YES;
                     }
+                  [self.gameState.chosenCards removeAllObjects];
+                  
                 }
                 else
                 {
@@ -80,7 +83,8 @@
                     {
                         otherCard.isChosen = NO;
                     }
-                    [_gameState.chosenCards addObject:card];
+                  [self.gameState.chosenCards removeAllObjects];
+                  [_gameState.chosenCards addObject:card];
                 }
             }
             else {
@@ -93,6 +97,16 @@
     }
 }
 
+- (Card *)addCardToGame {
+  Card *card = [self.deck drawRandomCard];
+  [self.cards addObject:card];
+  return card;
+}
+
+
+- (NSUInteger)numberOfCardInTheGame {
+  return self.cards.count;
+}
 
 
 @end

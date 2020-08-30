@@ -8,14 +8,13 @@
 
 #import "PlayingCardGameViewController.h"
 #import "PlayingCardDeck.h"
-#import "HistoryViewController.h"
+#import "MatchismoCardView.h"
 
 static int const MATCH_CARD_DEFAULT = 2;
 
+static NSUInteger const NUMBER_OF_CARDS_IN_THE_GAME = 30;
+static NSUInteger const MAX_NUMBER_OF_CARDS_IN_THE_GAME = 30;
 
-@interface PlayingCardGameViewController ()
-
-@end
 
 @implementation PlayingCardGameViewController
 
@@ -29,51 +28,29 @@ static int const MATCH_CARD_DEFAULT = 2;
   game.cardMatchNumber = MATCH_CARD_DEFAULT;
 }
 
-- (NSMutableAttributedString *)gameStateInterpreter:(GameState *)gameState
-{
-  NSString *gameStateText;
-  NSMutableAttributedString *gameStateAttributedString = [[NSMutableAttributedString alloc] init];
-   
-  if (gameState.scoreEranedNow == 0)
-  {
-      [gameStateAttributedString appendAttributedString: [[NSAttributedString alloc] initWithString: gameState.chosenCard.contents]];
-      return gameStateAttributedString;
-  }
-  else if (gameState.scoreEranedNow > 0)
-  {
-    gameStateText =  [@"Matched " stringByAppendingString:gameState.chosenCard.contents];
-    for (PlayingCard *cardToText in gameState.chosenCards)
-    {
-        gameStateText = [gameStateText stringByAppendingString:cardToText.contents];
-    }
-    gameStateText = [gameStateText stringByAppendingFormat:@" for %ld points", gameState.scoreEranedNow];
-    [gameStateAttributedString appendAttributedString: [[NSAttributedString alloc] initWithString: gameStateText]];
-    [gameState removeAllChosenCard];
-    return gameStateAttributedString;
-  }
-  else
-  {
-    gameStateText =  @"";
-    for (PlayingCard *cardToText in gameState.chosenCards)
-    {
-        gameStateText = [gameStateText stringByAppendingString:cardToText.contents];
-    }
-    gameStateText = [gameStateText stringByAppendingFormat:@" don't match %ld points penalty", gameState.scoreEranedNow];
-    [gameStateAttributedString appendAttributedString: [[NSAttributedString alloc] initWithString: gameStateText]];
-    [gameState removeAllChosenCard];
-    [gameState appendChosenCard];
-    return gameStateAttributedString;
-  }
+- (void)crateDeckGameView {
+  self.deckView = [[MatchismoCardView alloc] initWithFrame: [self deckFrame]];
+  [self.gameView addSubview:self.deckView];
 }
 
-- (NSMutableAttributedString *)titleForCard:(Card *) card
-{
-  return card.isChosen ? [[NSMutableAttributedString alloc] initWithString:card.contents]: [[NSMutableAttributedString alloc] initWithString:@""];
+- (CardView *)createCardButtonView:(CGRect)cardFrame withCard:(Card *)card{
+  MatchismoCardView *matchismoCardView = [[MatchismoCardView alloc] initWithFrame:[self deckFrame]];
+  [matchismoCardView updateParameters:card];
+  return matchismoCardView;
 }
 
-- (NSString *)defualtImageForCard //abstract
-{
-  return @"CardBack";
+
+- (int)numberOfCardsForTheGame {
+  return NUMBER_OF_CARDS_IN_THE_GAME;
+}
+
+- (int)maxNumberOfCardsForTheGame {
+  return MAX_NUMBER_OF_CARDS_IN_THE_GAME;
+}
+
+- (void)flipCardsAnimation:(CardView *)cardButton withCard:(Card *)card {
+  [UIView transitionWithView:cardButton duration:0.5 options:UIViewAnimationOptionTransitionFlipFromLeft animations:nil
+                  completion:^(BOOL fin) {if (card.isMatched) [cardButton removeFromSuperview];}];
 }
 
 

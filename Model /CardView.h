@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Card.h"
 
 @interface CardView : UIView
+
 
 #define CORNER_FONT_STANDARD_HEIGHT 180.0
 #define CORNER_RADIUS 12.0
@@ -19,14 +21,14 @@
 @property (nonatomic) CGFloat faceCardScaleFactor;
 
 
-- (void)pinch:(UIPinchGestureRecognizer *)gesture;
 - (NSString *)rankAsString;
 - (CGFloat)faceCardScaleFactor;
 - (void)setFaceCardScaleFactor:(CGFloat)faceCardScaleFactor;
-
+- (void)updateParameters:(Card *)card;
 
 - (CGFloat)cornerScaleFactor;
 - (CGFloat)cornerRadius;
 - (CGFloat)cornerOffset;
+
 
 @end

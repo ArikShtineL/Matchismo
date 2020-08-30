@@ -43,7 +43,7 @@ static const int COST_OF_CHOOSN = 0;
 
 + (NSArray *)validColors
 {
-    return @[@"Blue", @"Green", @"Red"];
+    return @[@"Purple", @"Green", @"Red"];
 }
 
 + (NSArray *)validShadowValues

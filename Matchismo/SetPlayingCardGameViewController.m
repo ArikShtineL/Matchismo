@@ -9,12 +9,13 @@
 #import "SetPlayingCardGameViewController.h"
 #import "SetPlayingCardDeck.h"
 #import "SetPlayingCard.h"
+#import "SetCardView.h"
 
 static int const MATCH_CARD_SET = 3;
 
-@interface SetPlayingCardGameViewController ()
+static NSUInteger const NUMBER_OF_CARDS_IN_THE_GAME = 12;
+static NSUInteger const MAX_NUMBER_OF_CARDS_IN_THE_GAME = 21;
 
-@end
 
 @implementation SetPlayingCardGameViewController
 
@@ -27,68 +28,6 @@ static int const MATCH_CARD_SET = 3;
 {
   game.cardMatchNumber = MATCH_CARD_SET;
 }
-
-
-- (NSMutableAttributedString *)titleForCard:(Card *) card
-{
-  SetPlayingCard *setCard = [[SetPlayingCard alloc] init];
-  if ([card isKindOfClass:[SetPlayingCard class]])
-  {
-      setCard = (SetPlayingCard*)card;
-  }
-  return [self cardContents:setCard];
-}
-
-- (NSMutableAttributedString *)cardContents:(SetPlayingCard *) setCard
-{
-  NSMutableAttributedString *cardContent;
-  cardContent = [[NSMutableAttributedString alloc] initWithString:[[[SetPlayingCard rankStrings][setCard.rank] stringByAppendingString:@"  " ] stringByAppendingString:setCard.suit]];
-  [cardContent setAttributes:@{ NSStrokeColorAttributeName: [self setColor:setCard.color], NSStrokeWidthAttributeName:setCard.shadowValue} range:NSMakeRange(0, [cardContent length])]; 
-  return cardContent;
-}
-
-
-- (NSMutableAttributedString *)gameStateInterpreter:(GameState *)gameState
-{
-  NSMutableAttributedString *gameStateAttributedString = [[NSMutableAttributedString alloc] init];
-  SetPlayingCard *chosenSetCard;
-  if ([gameState.chosenCard isKindOfClass:[SetPlayingCard class]])
-  {
-      chosenSetCard = (SetPlayingCard *) gameState.chosenCard;
-  }
-  
-   
-  if (gameState.scoreEranedNow == 0 && gameState.chosenCards.count == 3)
-  {
-      for (SetPlayingCard *cardToText in gameState.chosenCards)
-      {
-        [gameStateAttributedString appendAttributedString:[self cardContents:cardToText]];
-      }
-
-      [gameStateAttributedString appendAttributedString:[[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@" not matched!"]]];
-    
-      [gameState removeAllChosenCard];
-      [gameState appendChosenCard];
-      return gameStateAttributedString;
-  }
-  else if (gameState.scoreEranedNow == 0)
-  {
-      return [self cardContents:chosenSetCard];
-  }
-  else
-  {
-    for (SetPlayingCard *cardToText in gameState.chosenCards)
-    {
-      [gameStateAttributedString appendAttributedString:[self cardContents:cardToText]];
-    }
-
-    [gameStateAttributedString appendAttributedString:[[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@" matched for %ld points", gameState.scoreEranedNow]]];
-    [gameState removeAllChosenCard];
-
-    return gameStateAttributedString;
-  }
-}
-
 
 -(UIColor *)setColor:(NSString *)colorText
 {
@@ -106,14 +45,26 @@ static int const MATCH_CARD_SET = 3;
   }
 }
 
-- (UIImage *)backGroundImageForCard:(Card *)card
-{
-    return [UIImage imageNamed:card.isChosen ? @"ColordCard": @"CardFront"];;
+
+- (void)crateDeckGameView {
+  self.deckView = [[SetCardView alloc] initWithFrame: [self deckFrame]];
+  [self.gameView addSubview:self.deckView];
 }
 
-- (NSString *)defualtImageForCard //abstract
-{
-  return @"CardFront";
+- (CardView *)createCardButtonView:(CGRect)cardFrame withCard:(Card *)card{
+  SetCardView *setCardView = [[SetCardView alloc] initWithFrame:[self deckFrame]];
+  [setCardView updateParameters:card];
+  return setCardView;
 }
+
+
+- (int)numberOfCardsForTheGame {
+  return NUMBER_OF_CARDS_IN_THE_GAME;
+}
+
+- (int)maxNumberOfCardsForTheGame {
+  return MAX_NUMBER_OF_CARDS_IN_THE_GAME;
+}
+
 
 @end

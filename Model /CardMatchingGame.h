@@ -14,17 +14,23 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface CardMatchingGame : NSObject
 
+@property (nonatomic, readonly) NSInteger score;
+@property (nonatomic) NSUInteger cardMatchNumber;
+@property (nonatomic) GameState *gameState;
+@property (nonatomic, strong) Deck *deck;
+@property (nonatomic, strong) NSMutableArray<Card*> *cards; 
+
 
 - (instancetype)init NS_UNAVAILABLE;
 - (instancetype)initWithCardCount:(NSUInteger)count usingDeck:(Deck*)deck NS_DESIGNATED_INITIALIZER;
 
 - (void)chooseCardAtIndex:(NSUInteger)index;
 - (Card*)cardAtIndex:(NSUInteger)index;
+- (NSUInteger)numberOfCardInTheGame;
+- (Card *)addCardToGame;
 
 
-@property (nonatomic, readonly) NSInteger score;
-@property (nonatomic) NSUInteger cardMatchNumber;
-@property (nonatomic) GameState *gameState;
+
 
 
 @end

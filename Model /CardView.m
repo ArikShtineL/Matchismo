@@ -55,15 +55,8 @@
   return nil;
 }
 
-#pragma mark - Gesture Handling
-
-- (void)pinch:(UIPinchGestureRecognizer *)gesture
-{
-    if ((gesture.state == UIGestureRecognizerStateChanged) ||
-        (gesture.state == UIGestureRecognizerStateEnded)) {
-        self.faceCardScaleFactor *= gesture.scale;
-        gesture.scale = 1.0;
-    }
+- (void)updateParameters:(Card *)card {
+  //abstract
 }
 
 #pragma mark - Drawing
@@ -71,13 +64,6 @@
 - (CGFloat)cornerScaleFactor { return self.bounds.size.height / CORNER_FONT_STANDARD_HEIGHT; }
 - (CGFloat)cornerRadius { return CORNER_RADIUS * [self cornerScaleFactor]; }
 - (CGFloat)cornerOffset { return [self cornerRadius] / 3.0; }
-
-//- (void)popContext
-//{
-//    CGContextRestoreGState(UIGraphicsGetCurrentContext());
-//}
-
-
 
 #pragma mark - Initialization
 

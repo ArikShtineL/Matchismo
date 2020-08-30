@@ -7,6 +7,7 @@
 //
 
 #import "SetCardView.h"
+#import "SetPlayingCard.h"
 
 @implementation SetCardView
 
@@ -50,26 +51,25 @@
     [roundedRect stroke];
   
     if (self.faceUp) {
-      //TODO:change this to config and by dict to get better positin : 1:0.5,2:0.3,3:0.25.
-      if ([self.suit isEqualToString:SQUIGGLE]) {
-        for (int i = 1; i <= self.rank; ++i) {
-          [self drawSquiggleAtPoint:CGPointMake(self.bounds.size.width * 0.25 * i, self.bounds.size.height * 0.5)];
-        }
-      }
-      else if ([self.suit isEqualToString:DIMAOND]) {
-        for (int i = 1; i <= self.rank; ++i) {
-          [self drawDimaondAtPoint:CGPointMake(self.bounds.size.width * 0.25 * i, self.bounds.size.height * 0.5)];
-        }
-      }
-      else if ([self.suit isEqualToString:OVAL])  {
-        for (int i = 1; i <= self.rank; ++i) {
-          [self drawOvalAtPoint:CGPointMake(self.bounds.size.width * 0.25 * i, self.bounds.size.height * 0.5)];
-        }
-      }
-
-    } else {
-        [[UIImage imageNamed:@"CardBack"] drawInRect:self.bounds];
+        [[UIImage imageNamed:@"ColordCard"] drawInRect:self.bounds];
     }
+      //TODO:change this to config and by dict to get better positin : 1:0.5,2:0.3,3:0.25.
+    if ([self.suit isEqualToString:SQUIGGLE]) {
+      for (int i = 1; i <= self.rank; ++i) {
+        [self drawSquiggleAtPoint:CGPointMake(self.bounds.size.width * 0.25 * i, self.bounds.size.height * 0.5)];
+      }
+    }
+    else if ([self.suit isEqualToString:DIMAOND]) {
+      for (int i = 1; i <= self.rank; ++i) {
+        [self drawDimaondAtPoint:CGPointMake(self.bounds.size.width * 0.25 * i, self.bounds.size.height * 0.5)];
+      }
+    }
+    else if ([self.suit isEqualToString:OVAL])  {
+      for (int i = 1; i <= self.rank; ++i) {
+        [self drawOvalAtPoint:CGPointMake(self.bounds.size.width * 0.25 * i, self.bounds.size.height * 0.5)];
+      }
+    }
+
 }
 
 
@@ -96,13 +96,13 @@
 
 
 - (UIColor *)colorToUIColor {
-  if ([self.color isEqualToString:@"green"]) {
+  if ([self.color isEqualToString:@"Green"]) {
     return [UIColor greenColor];
   }
-  else if ([self.color isEqualToString:@"red"]) {
+  else if ([self.color isEqualToString:@"Red"]) {
     return [UIColor redColor];
   }
-  else if ([self.color isEqualToString:@"purple"]) {
+  else if ([self.color isEqualToString:@"Purple"]) {
     return [UIColor purpleColor];
   }
   return [UIColor blackColor];
@@ -194,6 +194,14 @@
   [self strokeColorPath:path];
   
   CGContextRestoreGState(UIGraphicsGetCurrentContext());
+}
+
+- (void)updateParameters:(Card *)card {
+  SetPlayingCard *setPlayingCard = (SetPlayingCard *) card;
+  self.suit = setPlayingCard.suit;
+  self.rank = setPlayingCard.rank;
+  self.color = setPlayingCard.color;
+  self.shade = [NSString stringWithFormat:@"%@", setPlayingCard.shadowValue];
 }
 
 @end

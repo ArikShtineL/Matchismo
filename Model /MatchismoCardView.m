@@ -7,6 +7,7 @@
 //
 
 #import "MatchismoCardView.h"
+#import "PlayingCard.h"
 
 @implementation MatchismoCardView
 
@@ -71,7 +72,10 @@
     UIFont *cornerFont = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
     cornerFont = [cornerFont fontWithSize:cornerFont.pointSize * [self cornerScaleFactor]];
     
-    NSAttributedString *cornerText = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@\n%@", [self rankAsString], self.suit] attributes:@{ NSFontAttributeName : cornerFont, NSParagraphStyleAttributeName : paragraphStyle }];
+    NSAttributedString *cornerText =
+  [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%@\n%@", [self rankAsString], self.suit]
+                                  attributes:@{ NSFontAttributeName : cornerFont,
+                                                NSParagraphStyleAttributeName : paragraphStyle }];
     
     CGRect textBounds;
     textBounds.origin = CGPointMake([self cornerOffset], [self cornerOffset]);
@@ -107,7 +111,8 @@
                             verticalOffset:PIP_VOFFSET2_PERCENTAGE
                         mirroredVertically:(self.rank != 7)];
     }
-    if ((self.rank == 4) || (self.rank == 5) || (self.rank == 6) || (self.rank == 7) || (self.rank == 8) || (self.rank == 9) || (self.rank == 10)) {
+    if ((self.rank == 4) || (self.rank == 5) || (self.rank == 6) || (self.rank == 7) ||
+        (self.rank == 8) || (self.rank == 9) || (self.rank == 10)) {
         [self drawPipsWithHorizontalOffset:PIP_HOFFSET_PERCENTAGE
                             verticalOffset:PIP_VOFFSET3_PERCENTAGE
                         mirroredVertically:YES];
@@ -129,7 +134,8 @@
     CGPoint middle = CGPointMake(self.bounds.size.width/2, self.bounds.size.height/2);
     UIFont *pipFont = [UIFont preferredFontForTextStyle:UIFontTextStyleBody];
     pipFont = [pipFont fontWithSize:[pipFont pointSize] * self.bounds.size.width * PIP_FONT_SCALE_FACTOR];
-    NSAttributedString *attributedSuit = [[NSAttributedString alloc] initWithString:self.suit attributes:@{ NSFontAttributeName : pipFont }];
+    NSAttributedString *attributedSuit =
+  [[NSAttributedString alloc] initWithString:self.suit attributes:@{ NSFontAttributeName : pipFont }];
     CGSize pipSize = [attributedSuit size];
     CGPoint pipOrigin = CGPointMake(
                                     middle.x-pipSize.width/2.0-hoffset*self.bounds.size.width,
@@ -155,6 +161,12 @@
                             verticalOffset:voffset
                                 upsideDown:YES];
     }
+}
+
+- (void)updateParameters:(Card *)card {
+  PlayingCard *matchismoCard = (PlayingCard *) card;
+  self.suit = matchismoCard.suit;
+  self.rank = matchismoCard.rank;
 }
 
 
