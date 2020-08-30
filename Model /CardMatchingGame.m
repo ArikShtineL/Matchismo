@@ -71,6 +71,7 @@
                     for (Card *otherCard in _gameState.chosenCards)
                     {
                         otherCard.isMatched = YES;
+                        otherCard.isChosen = YES;
                     }
                   [self.gameState.chosenCards removeAllObjects];
                   
@@ -99,7 +100,9 @@
 
 - (Card *)addCardToGame {
   Card *card = [self.deck drawRandomCard];
-  [self.cards addObject:card];
+  if (card) {
+    [self.cards addObject:card];
+  }
   return card;
 }
 

@@ -14,8 +14,6 @@
 static int const MATCH_CARD_SET = 3;
 
 static NSUInteger const NUMBER_OF_CARDS_IN_THE_GAME = 12;
-static NSUInteger const MAX_NUMBER_OF_CARDS_IN_THE_GAME = 21;
-
 
 @implementation SetPlayingCardGameViewController
 
@@ -62,9 +60,6 @@ static NSUInteger const MAX_NUMBER_OF_CARDS_IN_THE_GAME = 21;
   return NUMBER_OF_CARDS_IN_THE_GAME;
 }
 
-- (int)maxNumberOfCardsForTheGame {
-  return MAX_NUMBER_OF_CARDS_IN_THE_GAME;
-}
 
 
 @end

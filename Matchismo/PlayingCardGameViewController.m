@@ -13,7 +13,6 @@
 static int const MATCH_CARD_DEFAULT = 2;
 
 static NSUInteger const NUMBER_OF_CARDS_IN_THE_GAME = 30;
-static NSUInteger const MAX_NUMBER_OF_CARDS_IN_THE_GAME = 30;
 
 
 @implementation PlayingCardGameViewController
@@ -44,9 +43,6 @@ static NSUInteger const MAX_NUMBER_OF_CARDS_IN_THE_GAME = 30;
   return NUMBER_OF_CARDS_IN_THE_GAME;
 }
 
-- (int)maxNumberOfCardsForTheGame {
-  return MAX_NUMBER_OF_CARDS_IN_THE_GAME;
-}
 
 - (void)flipCardsAnimation:(CardView *)cardButton withCard:(Card *)card {
   [UIView transitionWithView:cardButton duration:0.5 options:UIViewAnimationOptionTransitionFlipFromLeft animations:nil

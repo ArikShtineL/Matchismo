@@ -44,9 +44,10 @@ static int const MATCH_CARD_DEFAULT = 2;
 
 - (IBAction)AddCardsButton {
   for (int i = 0; i < self.game.cardMatchNumber ; ++i) {
-      if ([self.game numberOfCardInTheGame] < [self maxNumberOfCardsForTheGame]) {
-        [self takeCardOutFromDeck:[self deckFrame]];
-      }
+    [self takeCardOutFromDeck:[self deckFrame]];
+  }
+  if ([self.game.deck numberOfCardsInTheDeck] == 0) {
+    [self.deckView removeFromSuperview];
   }
   [self reOrderCards];
 }
@@ -67,20 +68,22 @@ static int const MATCH_CARD_DEFAULT = 2;
     [self returnTheCardToDeck];
     [self.deckView removeFromSuperview];
     [self.cardsViewsInTheGame removeAllObjects];
-  
-    [self crateDeckGameView];
     [self distributecardsFromDeckAtTheStart];
-  
     [self setGameMatchNumber:_game];
     self.ScoreLabel.text = @"Score: 0";
+    [self crateDeckGameView];
 }
 
 - (void)returnTheCardToDeck {
   for (CardView *cardView in self.cardsViewsInTheGame) {
-      [UIView animateWithDuration:1.0 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^ {
+      [UIView animateWithDuration:0.5 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^ {
         cardView.frame = [self deckFrame];
       } completion:^ (BOOL fin){ if (fin) [cardView removeFromSuperview];}];
   }
+}
+
+- (void)updateDeckViewSize {
+  self.deckView.frame = [self deckFrame];
 }
 
 
@@ -143,7 +146,9 @@ static int const MATCH_CARD_DEFAULT = 2;
 
 - (void)takeCardOutFromDeck:(CGRect)cardFrame {
   Card *card =  [self.game addCardToGame];
-  [self addCardButtonView:cardFrame withCard:card];
+  if (card) {
+    [self addCardButtonView:cardFrame withCard:card];
+  }
 }
 
 
@@ -206,11 +211,8 @@ static int const MATCH_CARD_DEFAULT = 2;
   return 0; //abstract
 }
 
-- (int)maxNumberOfCardsForTheGame {
-  return 0; //abstract
-}
-
 - (void)distributecardsFromDeckAtTheStart {
+  [self updateGrid];
   for (int i = 0; i < self.game.cards.count; ++i) {
     NSUInteger cellRow = i / self.grid.columnCount;
     NSUInteger cellColumn = i % self.grid.columnCount;
@@ -221,6 +223,7 @@ static int const MATCH_CARD_DEFAULT = 2;
 
 - (void)reOrderCards {
   [self updateGrid];
+  [self updateDeckViewSize];
   for (int i = 0; i < self.cardsViewsInTheGame.count; ++i) {
     NSUInteger cellRow = i / self.grid.columnCount;
     NSUInteger cellColumn = i % self.grid.columnCount;

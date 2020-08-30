@@ -27,7 +27,6 @@
 - (void)crateDeckGameView;
 - (void)updateGrid;
 - (int)numberOfCardsForTheGame;
-- (int)maxNumberOfCardsForTheGame;
 - (CGRect)deckFrame;
 - (void)flipCardsAnimation:(CardView *)cardButton withCard:(Card *)card;
 
