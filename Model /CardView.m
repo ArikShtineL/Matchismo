@@ -8,10 +8,6 @@
 
 #import "CardView.h"
 
-@interface CardView()
-
-@end
-
 @implementation CardView
 
 #pragma mark - Properties

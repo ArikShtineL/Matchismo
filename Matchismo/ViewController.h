@@ -18,7 +18,7 @@
 
 @property (weak, nonatomic) IBOutlet UIView *gameView;
 @property (strong, nonatomic) IBOutlet UIView *deckView; 
-@property (strong, nonatomic) Grid *grid;
+@property (readonly, nonatomic) Grid *grid;
 
 
 - (Deck *)createDeck; // abstract

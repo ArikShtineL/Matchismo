@@ -83,7 +83,11 @@ static int const MATCH_CARD_DEFAULT = 2;
   for (CardView *cardView in self.cardsViewsInTheGame) {
       [UIView animateWithDuration:0.5 delay:0.0 options:UIViewAnimationOptionCurveEaseInOut animations:^ {
         cardView.frame = [self deckFrame];
-      } completion:^ (BOOL fin){ if (fin) [cardView removeFromSuperview];}];
+      } completion:^ (BOOL fin){
+        if (fin) {
+          [cardView removeFromSuperview];
+        }
+      }];
   }
 }
 

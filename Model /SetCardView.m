@@ -53,7 +53,6 @@
     if (self.faceUp) {
         [[UIImage imageNamed:@"ColordCard"] drawInRect:self.bounds];
     }
-      //TODO:change this to config and by dict to get better positin : 1:0.5,2:0.3,3:0.25.
     if ([self.suit isEqualToString:SQUIGGLE]) {
       for (int i = 1; i <= self.rank; ++i) {
         [self drawSquiggleAtPoint:CGPointMake(self.bounds.size.width * 0.25 * i, self.bounds.size.height * 0.5)];
