@@ -19,20 +19,25 @@ static int const MATCH_CARD_DEFAULT = 2;
 @property (strong, nonatomic) NSMutableArray *cardsViewsInTheGame;
 @property (strong, nonatomic) UIDynamicAnimator *cardMoveAnimator;
 @property (strong, nonatomic) UIAttachmentBehavior *attachment;
-@property (strong, nonatomic) CardView *gatheredUpCardsIntoPile;
+@property (strong, nonatomic) CardView *cardToDrag;
 
 @end	
 
 @implementation ViewController
 
 - (IBAction)tapToFlipCard:(UITapGestureRecognizer *)sender {
-  if (self.gatheredUpCardsIntoPile) {
-    self.gatheredUpCardsIntoPile = nil;
+  if (self.cardToDrag) {
     for (int i = 1; i < self.cardsViewsInTheGame.count; ++i) {
       CardView *cardview = self.cardsViewsInTheGame[i];
-      cardview.alpha = 1;
+      [UIView animateWithDuration:1.0 animations:^ {
+        cardview.frame = self.cardToDrag.frame;
+      }  completion:^(BOOL finished) {
+        cardview.alpha = 1;
+      }];
   }
+    [self.cardMoveAnimator removeBehavior:self.attachment];
     [self reOrderCards];
+    self.cardToDrag = nil;
   }
   else if ([sender.view isKindOfClass:[CardView class]]) {
     CardView *cardView = (CardView *)sender.view;
@@ -165,23 +170,26 @@ static int const MATCH_CARD_DEFAULT = 2;
 }
 
 - (IBAction)dragCardsByPanGsesture:(UIPanGestureRecognizer *)sender {
-  if (self.gatheredUpCardsIntoPile) {
+  if (self.cardToDrag) {
     CGPoint gesturePoint = [sender locationInView:self.gameView];
-    
     if (sender.state == UIGestureRecognizerStateBegan) {
       [self attachCardToPointView:gesturePoint];
     }
     else if (sender.state == UIGestureRecognizerStateChanged) {
       self.attachment.anchorPoint = gesturePoint;
+      self.attachment.length = 0;
+    }
+    else if (sender.state ==  UIGestureRecognizerStateEnded) {
+      [self.cardMoveAnimator removeBehavior:self.attachment];
     }
   }
 
 }
 
 - (void)attachCardToPointView:(CGPoint)anchorPoint {
-  if (self.gatheredUpCardsIntoPile) {
+  if (self.cardToDrag) {
     self.attachment =
-    [[UIAttachmentBehavior alloc] initWithItem:self.gatheredUpCardsIntoPile attachedToAnchor:anchorPoint];
+    [[UIAttachmentBehavior alloc] initWithItem:self.cardToDrag attachedToAnchor:anchorPoint];
     [self.cardMoveAnimator addBehavior:self.attachment];
   }
 }
@@ -190,15 +198,18 @@ static int const MATCH_CARD_DEFAULT = 2;
 - (IBAction)pinchCards:(UIPinchGestureRecognizer *)sender {
 
   if ((sender.state == UIGestureRecognizerStateEnded)) {
-    self.gatheredUpCardsIntoPile = [self.cardsViewsInTheGame firstObject];
+    self.cardToDrag = [self.cardsViewsInTheGame firstObject];
       for (int i = 1; i < self.cardsViewsInTheGame.count; ++i) {
       CardView *cardview = self.cardsViewsInTheGame[i];
+        
       [UIView animateWithDuration:1 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^ {
         cardview.frame = [self.grid frameOfCellAtRow:self.grid.columnCount / 2 inColumn:self.grid.rowCount / 2];
       } completion:^(BOOL fin) {if (fin) cardview.alpha = 0;}];
     }
-    self.gatheredUpCardsIntoPile.frame =
-    [self.grid frameOfCellAtRow:self.grid.columnCount / 2 inColumn:self.grid.rowCount / 2];
+    
+    [UIView animateWithDuration:1 delay:0 options:UIViewAnimationOptionCurveEaseInOut animations:^ {
+      self.cardToDrag.frame = [self.grid frameOfCellAtRow:self.grid.columnCount / 2 inColumn:self.grid.rowCount / 2];
+    } completion:nil];
   }
 }
 
